@@ -1,0 +1,153 @@
+# ==================================
+# TASK 1: PEAS SPECIFICATIONS
+# ==================================
+
+print("TASK 1: PEAS SPECIFICATIONS")
+
+# Delivery Robot
+print("\n1. DELIVERY ROBOT")
+
+print("Performance Measure:")
+print("- Deliver correct parcel")
+print("- Deliver safely")
+print("- Save time and battery")
+
+print("Environment:")
+print("- Roads and footpaths")
+print("- People and vehicles")
+print("- Weather and obstacles")
+
+print("Actuators:")
+print("- Motors")
+print("- Brakes")
+print("- Steering")
+print("- Speaker")
+
+print("Sensors:")
+print("- Camera")
+print("- GPS")
+print("- Distance sensors")
+
+
+# Student Support Agent
+print("\n2. STUDENT SUPPORT AGENT")
+
+print("Performance Measure:")
+print("- Give correct answers")
+print("- Help students")
+print("- Protect student privacy")
+
+print("Environment:")
+print("- Students")
+print("- Course materials")
+print("- University policies")
+
+print("Actuators:")
+print("- Display answers")
+print("- Ask questions")
+print("- Provide study plans")
+
+print("Sensors:")
+print("- Student questions")
+print("- Uploaded documents")
+print("- Student feedback")
+
+
+# ==================================
+# TASK 2: ENVIRONMENT CLASSIFICATION
+# ==================================
+
+print("\nTASK 2: ENVIRONMENT CLASSIFICATION")
+
+print("\nDelivery Robot:")
+print("Observability: Partially Observable")
+print("Reason: Robot cannot see everything.")
+print("Determinism: Stochastic")
+print("Reason: People and traffic can change.")
+print("Observable: Distance of an obstacle")
+print("Hidden: Pedestrian intention")
+
+print("\nStudent Support Agent:")
+print("Observability: Partially Observable")
+print("Reason: AI does not know everything about students.")
+print("Determinism: Stochastic")
+print("Reason: Questions and answers can vary.")
+print("Observable: Student question")
+print("Hidden: Student's previous knowledge")
+
+print("\nReal Environment vs Simulator:")
+print("- Real environment has unexpected situations.")
+print("- Simulator uses simplified conditions.")
+print("- Simulator results do not guarantee real-world safety.")
+
+
+# ==================================
+# TASK 3: MODE-AWARE CONTROLLER
+# ==================================
+
+print("\nTASK 3: MODE-AWARE CONTROLLER")
+
+
+class ModeAwareController:
+
+    def __init__(self):
+        self.previous_mode = None
+        self.previous_command = None
+        self.previous_target = None
+
+    def control(self, temperature, target):
+
+        if temperature >= 30:
+            mode = "COOL"
+
+        elif temperature <= 18:
+            mode = "HEAT"
+
+        elif self.previous_mode is not None:
+            mode = self.previous_mode
+
+        else:
+            mode = "IDLE"
+
+        if mode == "IDLE":
+            command = "IDLE"
+        else:
+            command = mode + ":" + target
+
+        # Avoid repeating identical commands
+        if (command == self.previous_command
+                and target == self.previous_target
+                and mode == self.previous_mode):
+
+            print("Same command - Not Sent")
+
+        else:
+            print("Temperature:", temperature)
+            print("Mode:", mode)
+            print("Target:", target)
+            print("Command Sent:", command)
+
+        self.previous_mode = mode
+        self.previous_command = command
+        self.previous_target = target
+
+
+# Testing Controller
+
+controller = ModeAwareController()
+
+print("\nController Test Results:")
+
+controller.control(30, "Room-A")
+controller.control(30, "Room-A")
+controller.control(18, "Room-A")
+controller.control(31, "Room-A")
+controller.control(31, "Room-B")
+controller.control(24, "Room-C")
+
+
+# ==================================
+# END OF ASSIGNMENT
+# ==================================
+
+print("\nAI LAB 2 COMPLETED SUCCESSFULLY")
