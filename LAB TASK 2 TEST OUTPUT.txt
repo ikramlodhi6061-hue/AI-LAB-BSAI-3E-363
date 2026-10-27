@@ -1,0 +1,69 @@
+========== TEST 1: REPEATED PERCEPTS ==========
+
+Previous Mode: UNKNOWN
+Temperature: 30
+Occupied: True
+Target Mode: COOL
+Command: SET_MODE:COOL
+
+Previous Mode: COOL
+Temperature: 30
+Occupied: True
+Target Mode: COOL
+Command: NO COMMAND
+
+Previous Mode: COOL
+Temperature: 31
+Occupied: True
+Target Mode: COOL
+Command: NO COMMAND
+
+Previous Mode: COOL
+Temperature: 24
+Occupied: True
+Target Mode: IDLE
+Command: SET_MODE:IDLE
+
+
+========== TEST 2: EXACT THRESHOLD BOUNDARIES ==========
+
+Temperature: 18
+Target Mode: HEAT
+Command: SET_MODE:HEAT
+
+Temperature: 18
+Target Mode: HEAT
+Command: NO COMMAND
+
+Temperature: 28
+Target Mode: COOL
+Command: SET_MODE:COOL
+
+Temperature: 28
+Target Mode: COOL
+Command: NO COMMAND
+
+
+========== TEST 3: EMPTY ROOM ==========
+
+Temperature: 35
+Occupied: False
+Target Mode: OFF
+Command: SET_MODE:OFF
+
+Temperature: 35
+Occupied: False
+Target Mode: OFF
+Command: NO COMMAND
+
+Temperature: 15
+Occupied: False
+Target Mode: OFF
+Command: NO COMMAND
+
+Temperature: 15
+Occupied: True
+Target Mode: HEAT
+Command: SET_MODE:HEAT
+
+========== PROGRAM COMPLETED ==========
